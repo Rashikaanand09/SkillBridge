@@ -1,11 +1,6 @@
-const express=require('express');
-const app=express();
-const PORT=3001;
+import app from "./app.js";
 
-app.get('/',(req,res)=>{
-    res.send("Hello jaiz");
-});
 
-app.listen(PORT,()=>{
-    console.log(`Server is running on the port ${PORT}`);
-});
+app.listen(process.env.PORT,()=>{
+  console.log(`server is running on port ${process.env.PORT}`);
+})
