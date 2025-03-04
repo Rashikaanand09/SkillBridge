@@ -1,0 +1,41 @@
+.enrolled-courses-container {
+    width: 100vw;
+    /* Full width of the viewport */
+    padding: 20px;
+    background-color: #e6ece1;
+    /* Background to match theme */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.enrolled-courses {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 90vw;
+}
+
+.course-card {
+    background-color: #0e119fc8;
+    /* Soft green */
+    color: #4a4aab;
+    /* Darker green for visibility */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 250px;
+    text-align: center;
+    font-weight: bold;
+    flex: 1 1 calc(33.333% - 40px);
+    /* Makes 3 cards per row */
+    transition: transform 0.3s ease-in-out;
+}
+
+.course-card:hover {
+    transform: scale(1.05);
+    background-color: #A0C878;
+}

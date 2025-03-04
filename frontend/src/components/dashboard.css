@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* dashboard.css */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    background-color:white;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #0d304b;
+    color: white;
+    padding: 25px 20px;
+    margin-bottom: 0.2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    width: 100%;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Dashboard Content - Full Coverage */
+.dashboard-content {
+    display: flex;
+    flex: 1;
+    /* Makes it take up all available space */
+    margin: 20px;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: stretch;
+    /* Makes all children stretch to fill height */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #0d304b;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    /* height: 200%; */
+}
+
+/* Stats Cards - Horizontal Layout */
+.stat-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Stat Card */
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    width: 200px;
+    text-align: center;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+}
+
+/* Enrolled Courses - Full Page Width */
+.enrolled-courses {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allows wrapping if too many cards */
+    gap: 15px;
+    margin-top: 20px;
+    padding: 10px;
+    justify-content: flex-start;
+    /* Aligns items in a row */
+    width: 100vw;
+}
+
+/* Course Card */
+.course-card {
+    height: 120px;
+    background-color: #0d304b;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    min-width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.course-card:hover {
+    transform: scale(1.05);
+}
+
+/* Full Coverage for Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /* Ensures it's a circle */
+    object-fit: cover;
+    cursor: pointer;
+}

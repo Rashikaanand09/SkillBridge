@@ -3,12 +3,13 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import validator from "validator"; // For email validation
+
 import "react-toastify/dist/ReactToastify.css";
 import "./authpage.css";
 
 function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
-  const [signupStep, setSignupStep] = useState(1); // Step 1: Email, Step 2: OTP
+  const [signupStep, setSignupStep] = useState(1); // Step 1: Email, Step 2: OTP, Step 3: Password
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,6 +19,10 @@ function AuthPage() {
   const swapMode = () => {
     setIsLogin(!isLogin);
     setSignupStep(1); // Reset signup step
+    setEmail("");
+    setName("");
+    setPassword("");
+    setOtp("");
   };
 
   // Validate email format
@@ -46,7 +51,7 @@ function AuthPage() {
   const handleVerifyOTP = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/api/auth/verify-otp", { email, otp });
+      await axios.post("http://localhost:4000/api/auth/verify-otp", { otp });
       toast.success("Email verified! Please set your password.");
       setSignupStep(3); // Move to password setup step
     } catch (err) {
@@ -61,9 +66,27 @@ function AuthPage() {
     try {
       await axios.post("http://localhost:4000/api/auth/register", { name, email, password });
       toast.success("User registered successfully!");
+      setIsLogin(true); // Switch to login mode after registration
     } catch (err) {
       console.error(err);
       toast.error("Failed to register user.");
+    }
+  };
+
+  // Handle login
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:4000/api/auth/login", {
+        email,
+        password,
+      });
+      toast.success("Login successful!");
+      localStorage.setItem("token", response.data.token);
+      console.log(response.data);
+    } catch (err) {
+      console.error(err);
+      toast.error("Invalid email or password.");
     }
   };
 
@@ -119,8 +142,23 @@ function AuthPage() {
         {/* Right Section */}
         <div className={`auth-section right ${isLogin ? "show-form" : "show-button"}`}>
           {isLogin ? (
-            <form onSubmit={(e) => e.preventDefault()} className="auth-form">
-              {/* Login form here */}
+            <form onSubmit={handleLogin} className="auth-form">
+              <h2>Login</h2>
+              <label>Email</label>
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" />
+              <label>Password</label>
+              <div className="password-input-container">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
+                />
+                <span className="password-eye" onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
+              <button type="submit">Log In</button>
             </form>
           ) : (
             <button onClick={swapMode} className="auth-button">

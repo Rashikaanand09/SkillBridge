@@ -1,15 +1,19 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from "dotenv";
-import authRoutes from './routes/authroutes.js';
 import cors from "cors";
 import session from "express-session"; // For session management
 import nodemailer from 'nodemailer'; // For sending emails
 import otpGenerator from 'otp-generator'; // For generating OTPs
+import path from "path";
+import { fileURLToPath } from "url";
 
+// Load environment variables
 dotenv.config({ path: "./config/.env" });
 
 const app = express();
+
+// Enable CORS and JSON parsing
 app.use(cors());
 app.use(express.json());
 
@@ -21,15 +25,15 @@ app.use(session({
   cookie: { secure: false }
 }));
 
+// Connect to MongoDB
 if (!process.env.MONGO_URI) {
   console.error('Error: MONGO_URI is not defined in .env file');
   process.exit(1); // Exit if MONGO_URI is missing
 }
 
-// Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.error('Could not connect to MongoDB', err));
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('Could not connect to MongoDB', err));
 
 // Function to generate OTP
 const generateOTP = () => {
@@ -82,13 +86,30 @@ app.post('/api/auth/verify-otp', (req, res) => {
   }
 });
 
+// Import routes
+import authRoutes from './routes/authroutes.js';
+import uploadRoutes from "./routes/uploadRoutes.js";
+import dashboardRoutes from "./routes/dashboard.js";
+
 // Use routes
 app.use('/api/auth', authRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/uploads", uploadRoutes);
 
+// Serve static files for uploads
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// Home route
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${process.env.PORT}`);
+// Start server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
+
+export default app;

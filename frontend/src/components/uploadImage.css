@@ -1,0 +1,25 @@
+.upload-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.profile-circle {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    /* Ensures a perfect circle */
+    object-fit: cover;
+    /* Keeps image aspect ratio */
+    cursor: pointer;
+    border: 3px solid #ccc;
+    /* Light grey border */
+    transition: all 0.2s ease-in-out;
+}
+
+.profile-circle:hover {
+    opacity: 0.8;
+    /* Slight hover effect */
+}
