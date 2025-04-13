@@ -2,15 +2,30 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 5px 20px;
     background: #222;
     color: white;
+    max-width: 1700px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    /* Align SkillBridge and icon horizontally */
+    gap: 20px;
+    /* Adjust spacing between the icon and text */
 }
 
 .navbar ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    justify-content: center;
 }
 
 .navbar .nav-link {
@@ -23,29 +38,23 @@
     border-bottom: 2px solid white;
 }
 
+.website-name {
+    color: white;
+    font-size: 35px;
+    /* Adjusted font size for better visibility */
+    font-weight: bold;
+    margin-left: 55px;
+    margin-top: 0.5px;
+    /* Added margin to create space between name and links */
+}
+
 .profile-container {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.profile-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    cursor: pointer;
+    height: 65px;
 }
 
 .username {
     font-size: 16px;
-}
-
-.profile-pic {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    /* Ensures it's a circle */
-    object-fit: cover;
-    cursor: pointer;
 }
