@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../components/homepage.css"; // Import the CSS file
 
 const Homepage = () => {
-
-
   return (
     <div
       className="homepage"
@@ -19,26 +17,16 @@ const Homepage = () => {
         alignItems: "center",
       }}
     >
-
-
       {/* Navbar */}
       <nav className="navbar">
         <div className="navbar-left">
           <h1 className="navbar-logo">SkillBridge</h1>
         </div>
         <div className="navbar-right">
-          <Link to="/about" className="navbar-link">
-            About Us
-          </Link>
-          <Link to="/login" className="navbar-link">
-            Login
-          </Link>
-          <Link to="/signup" className="navbar-link">
-            Signup
-          </Link>
-          <Link to="/contact" className="navbar-link">
-            Contact
-          </Link>
+          <Link to="/about" className="navbar-link">About Us</Link>
+          <Link to="/login" className="navbar-link">Login</Link>
+          <Link to="/signup" className="navbar-link">Signup</Link>
+          <Link to="/contact" className="navbar-link">Contact</Link>
         </div>
       </nav>
 
@@ -47,17 +35,11 @@ const Homepage = () => {
         <div className="content-container">
           <div className="hero-section">
             <h1>Welcome to SkillBridge!</h1>
-            <br />
             <h2>"Your Gateway to Modern Learning"</h2>
             <p>Your one-stop platform for amazing courses.</p>
-            <br />
             <div style={{ display: "flex", alignItems: "center" }}>
-              <Link to="/signup" className="cta-button">
-                Get Started
-              </Link>
-              <Link to="/learnmore" className="learn-more-button">
-                Learn More
-              </Link>
+              <Link to="/signup" className="cta-button">Get Started</Link>
+              <Link to="/learnmore" className="learn-more-button">Learn More</Link>
             </div>
           </div>
 

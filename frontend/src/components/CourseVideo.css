@@ -1,0 +1,55 @@
+.course-video-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh;
+    /* Ensures full screen height */
+    background-color: #f4f4f4;
+}
+
+.course-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.video-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 1200px;
+    /* Limit the width */
+    margin-bottom: 30px;
+}
+
+.video-item {
+    flex: 1 1 calc(33% - 30px);
+    /* Ensure each video takes up 1/3 of the width */
+    max-width: 400px;
+    /* Max width for each video item */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.video-thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.suggested-videos {
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.suggested-videos h3 {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}

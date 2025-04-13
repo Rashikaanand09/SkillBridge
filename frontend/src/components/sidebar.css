@@ -1,36 +1,120 @@
-.sidebar {
+/* Sidebar container - controls sliding */
+.sidebar-container {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    /* Initially off-screen */
     width: 250px;
+    height: 100%;
+    background-color: #111;
+    transition: left 0.3s ease-in-out;
+    /* Smooth transition for sliding */
+    z-index: 1000;
+    /* Ensure sidebar is above other content */
+    padding-top: 20px;
+}
+
+/* When sidebar is open, shift it into view */
+.sidebar-container.open {
+    left: 0;
+    /* Moves sidebar to the left */
+}
+
+/* Sidebar itself */
+.sidebar {
     background: #f4f4f4;
+    padding: 10px;
+    color: wheat;
+    height: 100%;
+    position: relative;
 }
 
 .sidebar a {
     text-align: center;
     margin-top: 5px;
     color: white;
-    /* Make the link color white */
     text-decoration: none;
-    /* Remove underline */
     font-weight: bold;
     display: block;
-    /* Ensure it takes full width */
     padding: 10px 0;
-    /* Add spacing for better look */
 }
 
+/* Sidebar links on hover */
 .sidebar a:hover {
-    text-decoration: none;
-    /* Ensure underline doesn’t appear on hover */
     color: #307332;
-    /* Slightly lighter shade on hover */
+    /* Lighter shade on hover */
 }
 
-.sidebar h2{
-    text-align: center;
-    color: rgb(8, 9, 92);
+/* Close button */
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
+/* Sidebar toggle button */
+.sidebar-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px;
+    /* background-color: #fff7f7; */
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    /* Ensure button is above content */
+}
+
+/* Sidebar icon */
+.sidebar-icon {
+    /* padding-top: 5px; */
+    width: 40px;
+    height: 40px;
+    background: none;
+    color: white;
+}
+
+/* Main content area - does not shift unless sidebar is open */
+.main-content {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* When sidebar is open, shift the main content to the right */
+.main-content.shifted {
+    transform: translateX(250px);
+    /* Move content 250px to the right */
+}
+
+/* Links styles */
 .sidebar ul {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
     margin: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    border-bottom: 1px solid #444;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+    background-color: #575757;
+}
+
+.sidebar h2 {
+    text-align: center;
+    color: rgb(242, 242, 243);
+    margin-bottom: 20px;
 }

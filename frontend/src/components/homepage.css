@@ -1,264 +1,115 @@
-/* General Page Styling */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  
-  /* Navbar Styling */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
-    color: black;
-  }
-  
-  .navbar-logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .navbar-right {
-    display: flex;
-  }
-  
-  .navbar-link {
-    margin-left: 20px;
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
-  }
-  
-  .navbar-link:hover {
-    color: #2f3e69; /* Blue color on hover */
-  }
-
-  
-  /* Hero Section Styling */
-  .hero-section {
-    margin-left: 250px;
-    margin-top: calc(50vh - 100px); /* Center the hero section vertically */
-    color: black;
-  }
-  
-  .hero-section h1 {
-    margin-top: -10px;
-    font-size: 64px;
-    color: #143b5a;
-  }
-
-  .hero-section h2 {
-    /* margin-top: -10px; */
-    font-size: 40px;
-    color: #708a9f;
-  }
-  
-  .hero-section p {
-    font-size: 27px;
-  }
-  
-  .cta-button {
-    margin-top: 20px;
-    padding: 11px 20px;
-    font-size: 18px;
-    background-color:#143b5a;; /* Button color */
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .cta-button:hover {
-    background-color: transparent; /* Darker button color on hover */
-    color: #143b5a;
-    border: 1px solid #2f3e69;
-  }
-  
-  .main-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .content-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .hero-section {
-    flex: 1;
-    text-align: left;
-    padding-left: 20px;
-  }
-  
-  .triangle-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    height: 500px; /* Increased height for better positioning */
-    width: 500px; /* Increased width for better positioning */
-    margin-right: 100px;
-    margin-top: -70px;
-  }
-  
-  .circle-background {
-    position: absolute;
-    top: 87%;
-    left: 56%;
-    transform: translate(-50%, -50%);
-    width: 5090px;
-    height: 790px;
-    border-radius: 50%;
-    /* background-color: #cfe0e6; Light blue color */
-    background: radial-gradient(#cfe0e6, #a1c9f2); /* Gradient background */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
-    z-index: -1; /* Ensure it's behind the boxes */
-    animation: rotateCircle 30s linear infinite;
-  }
-  @keyframes rotateCircle {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
+/* Body */
+.homepage {
+  font-family: Arial, sans-serif;
 }
 
-.circle-background::after {
-  content: "";
-  position: absolute;
+/* Navbar */
+.navbar {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent background */
+  position: fixed;
   top: 0;
   left: 0;
+  z-index: 1000;
+}
+
+.navbar-left .navbar-logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.navbar-right {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.navbar-link:hover {
+  color: #4CAF50;
+  /* Green on hover */
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  margin-top: 80px;
+  /* Ensure the navbar doesn't overlap */
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.cta-button,
+.learn-more-button {
+  padding: 15px 30px;
+  font-size: 1rem;
+  margin: 5px;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover,
+.learn-more-button:hover {
+  background-color: #45a049;
+}
+
+/* Triangle Container */
+.triangle-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+.box {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.box img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.circle-background {
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 200px;
+  height: 200px;
+  background-color: #4CAF50;
   border-radius: 50%;
-  background: radial-gradient(rgba(255, 255, 255, 0.5), transparent);
-  animation: glow 5s ease-in-out infinite;
+  z-index: -1;
 }
-
-@keyframes glow {
-  0% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.5;
-  }
-}
-
-
-  .box {
-    width: 300px; /* Increased width */
-    height: 300px; /* Increased height */
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 30px; /* Increased border radius */
-    
-  }
-  
-  .box1 {
-    background-color: #143b5a;;
-    top: 125px;
-    left: calc(50% - 100px); /* Adjusted positioning */
-    z-index: 3; /* Ensure it's on top */
-  }
-  
-  .box2 {
-    background-color: #1e4868;;
-    top: 390px;
-    left: calc(33% - 100px); /* Adjusted positioning */
-    z-index: 2; /* Middle layer */
-  }
-  
-  .box3 {
-    background-color: #2b597c;;
-    top: 420px;
-    right: calc(17% - 100px); /* Adjusted positioning */
-    z-index: 1; /* Bottom layer */
-  }
-  
-  .box img {
-    max-width: 80%;
-    max-height: 80%;
-    object-fit: contain; /* Ensure image fits inside the box */
-  }
-  
-  /* Learn More Button Styling */
-.learn-more-button {
-  margin-top: 20px;
-  margin-left: 10px; /* Added margin for spacing */
-  padding: 10px 20px; /* Padding for button */
-  font-size: 18px; /* Font size */
-  background-color: transparent; /* Transparent background */
-  border: 1px solid #2f3e69; /* Border color */
-  border-radius: 5px;
-  color: #2f3e69; /* Text color */
-  cursor: pointer;
-}
-
-.learn-more-button:hover {
-  background-color: #143b5a; /* Darker background on hover */
-  color: white; /* White text on hover */
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-  .hero-section {
-    margin-left: 0;
-    margin-top: calc(50vh - 50px);
-  }
-  .hero-section h1 {
-    font-size: 36px;
-  }
-  .hero-section p {
-    font-size: 16px;
-  }
-  .triangle-container {
-    height: 400px;
-    width: 400px;
-    margin-right: 0;
-  }
-  .box {
-    width: 200px;
-    height: 200px;
-  }
-  .box1 {
-    top: 100px;
-  }
-  .box2 {
-    top: 250px;
-  }
-  .box3 {
-    top: 280px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-section {
-    text-align: center;
-  }
-  .triangle-container {
-    display: none; /* Hide triangle on small screens */
-  }
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-  }
-  .navbar-right {
-    margin-top: 10px;
-  }
-}
-
