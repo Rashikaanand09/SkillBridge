@@ -1,26 +1,12 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
+import express from "express";
+import { registerUser, loginUser } from "../controllers/authcontroller.js";
 
 const router = express.Router();
-const User = mongoose.model('User', {
-  name: String,
-  email: String,
-  password: String,
-});
 
-router.post('/users', async (req, res) => {
-  try {
-    const { name, email, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
+// Register User
+router.post("/register", registerUser);
 
-    const user = new User({ name, email, password: hashedPassword });
-    await user.save();
-    res.send({ message: 'User created successfully' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send({ message: 'Error creating user' });
-  }
-});
+// Login User
+router.post("/login", loginUser);
 
 export default router;

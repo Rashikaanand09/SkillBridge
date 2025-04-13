@@ -30,7 +30,7 @@ const Navbar = () => {
     return (
         <>
             <nav className="navbar">
-                <h1>EduTech Platform</h1>
+                <h1>SkillBridge</h1>
                 <ul>
                     <li><a href="/" className="nav-link">Home</a></li>
                     <li><a href="/courses" className="nav-link active">Courses</a></li>
@@ -40,7 +40,7 @@ const Navbar = () => {
                 {/* Profile Section */}
                 <div className="profile-container" onClick={handleImageClick}>
                     <img src={profileImage} alt="Profile" className="profile-pic" />
-                    <span className="username">{loggedInUser}</span>
+                    {/* <span className="username">{loggedInUser}</span> */}
                 </div>
             </nav>
 

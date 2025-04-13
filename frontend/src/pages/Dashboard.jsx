@@ -5,7 +5,7 @@ import { ProfileContext } from "../components/ProfileContext";
 import "../components/dashboard.css";
 
 const Dashboard = () => {
-    const userName = "John Doe"; // Replace with dynamic user data
+    const userName = localStorage.getItem("userName"); // Replace with dynamic user data
     const { profileImage } = useContext(ProfileContext);
 
     return (
@@ -17,7 +17,7 @@ const Dashboard = () => {
                     {/* Profile Section */}
                     <div className="profile-section">
                         <img src={profileImage} alt="Profile" className="profile-pic" />
-                        <h2 className="user-name">Welcome, {userName}!</h2>
+                        <h2 className="user-name">Welcome!</h2>
                     </div>
 
                     {/* Statistics Cards */}

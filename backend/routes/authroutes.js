@@ -1,32 +1,50 @@
-// routes/authroutes.js
-import express from 'express';
-import { registerUser, loginUser } from '../controllers/authcontroller.js';
+import express from "express";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import User from "../models/User.js";
 
 const router = express.Router();
 
-// Register user
-router.post('/register', registerUser);
+// **Signup Route**
+router.post("/signup", async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
 
-// Login user
-router.post('/login', loginUser);
+    // Check if user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) return res.status(400).json({ message: "User already exists" });
 
-// Protected route example
-router.get('/protected', authenticateToken, (req, res) => {
-    res.send({ message: 'Hello, authenticated user!' });
+    // Hash Password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    // Create and Save User
+    const newUser = new User({ username, email, password: hashedPassword });
+    await newUser.save();
+
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
 });
 
-// Middleware to authenticate token
-function authenticateToken(req, res, next) {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-    if (token == null) return res.status(401).send({ message: 'Access denied. No token provided.' });
+// **Login Route**
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    if (!user) return res.status(400).json({ message: "User not found" });
 
-    const jwt = require('jsonwebtoken');
-    jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
-        if (err) return res.status(403).send({ message: 'Access denied. Invalid token.' });
-        req.user = user;
-        next();
-    });
-}
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+
+    res.json({ token, user: { id: user._id, username: user.username, email: user.email } });
+  } catch (error) {
+    console.error("Error during login:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
 
 export default router;

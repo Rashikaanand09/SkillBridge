@@ -67,6 +67,7 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+    margin-top: -300px;
 }
 
 /* Stat Card */
@@ -111,24 +112,29 @@
     flex-wrap: wrap;
     /* Allows wrapping if too many cards */
     gap: 15px;
-    margin-top: 20px;
+    /* margin-top: -190px; */
     padding: 10px;
     justify-content: flex-start;
     /* Aligns items in a row */
     width: 100vw;
+    /* color: #ddd; */
 }
-
+.courses-section {
+    margin-top: -20px; /* Adjust this value as needed */
+  }
+  
 /* Course Card */
 .course-card {
     height: 120px;
     background-color: #0d304b;
     padding: 15px;
-    margin-top: 15px;
+    
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     min-width: 250px;
     text-align: center;
     transition: transform 0.3s ease-in-out;
+    color: #ddd;
 }
 
 .course-card:hover {

@@ -1,0 +1,110 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Background color */
+  }
+  
+  .login-container {
+    height: 100vh; /* Full viewport height */
+    background-color: #0d304b; /* Background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-card {
+    background-color: white; /* Card background */
+    padding: 40px; /* Increase padding for larger form size */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    width: 500px; /* Increase form width */
+  }
+  
+  .login-card h2 {
+    font-size: 28px; /* Increase heading size */
+    margin-bottom: 20px;
+  }
+  
+  .input-group {
+    margin-bottom: 20px; /* Increase spacing between inputs */
+  }
+  
+  .input-group label {
+    display: block; /* Display label as block */
+    margin-bottom: 10px;
+  }
+  
+  .input-group input {
+    width: 100%; /* Full width input */
+    padding: 10px; /* Increase padding for better usability */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background for inputs */
+  }
+  
+  .password-group {
+    position: relative; /* For toggle password button */
+  }
+  
+  .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .login-button {
+    width: 100%; /* Full width button */
+    padding: 10px; /* Increase padding for better usability */
+    background-color: #275b92; /* Button color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+  }
+  
+  .login-button:hover {
+    background-color: #0056b3; /* Darker button color on hover */
+  }
+  
+  .error {
+    color: red; /* Error text color */
+    margin-bottom: 20px;
+  }
+  
+  .register-button {
+    background-color: #275b92; /* Button color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 5px 10px; /* Add padding for better usability */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    margin-top: 20px; /* Add spacing after form */
+    margin-right: 10px;
+  }
+  
+  .register-button:hover {
+    background-color: #0056b3; /* Darker button color on hover */
+  }
+  
+  .forgot-password {
+    text-decoration: none;
+    color: #25476b; /* Link color */
+  }
+  
+  .forgot-password:hover {
+    color: #2b4c70; /* Darker link color on hover */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .login-card {
+      width: 80%; /* Adjust width for smaller screens */
+    }
+  }
+  
