@@ -10,7 +10,8 @@ const ProfileModal = ({ isOpen, onClose, profileImage, onChange }) => {
         <div className="modal-overlay">
             <div className="modal-content">
                 {/* Close Button */}
-                <button className="close-btn" onClick={() => { setViewImage(false); onClose(); }}>✖</button>
+                <button className="close-btn" onClick={() =>
+                { setViewImage(false); onClose(); }}>✖</button>
 
                 {viewImage ? (
                     <>

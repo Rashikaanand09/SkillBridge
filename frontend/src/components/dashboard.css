@@ -1,17 +1,19 @@
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-/* dashboard.css */
+/* Dashboard Container */
 .dashboard-container {
     display: flex;
     flex-direction: column;
-    background-color:white;
+    background-color: white;
     min-height: 100vh;
     font-family: 'Arial', sans-serif;
+    align-items: center;
+    /* Center all children horizontally */
 }
 
 /* Navbar */
@@ -19,7 +21,6 @@
     background-color: #0d304b;
     color: white;
     padding: 25px 20px;
-    margin-bottom: 0.2px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,16 +39,14 @@
     text-decoration: underline;
 }
 
-/* Dashboard Content - Full Coverage */
+/* Dashboard Content */
 .dashboard-content {
     display: flex;
     flex: 1;
-    /* Makes it take up all available space */
-    margin: 20px;
     gap: 20px;
     justify-content: space-between;
     align-items: stretch;
-    /* Makes all children stretch to fill height */
+    margin: 20px;
 }
 
 /* Sidebar */
@@ -57,20 +56,73 @@
     padding: 20px;
     border-radius: 10px;
     color: white;
-    /* height: 200%; */
 }
 
-/* Stats Cards - Horizontal Layout */
+/* Main Content Section */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: flex-start;
+    /* Change this to flex-start */
+    align-items: center;
+    /* Ensures items are centered horizontally */
+    width: 100%;
+    padding: 20px;
+    /* Added padding for some space */
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in-out;
+}
+
+.main-content.shifted {
+    transform: translateX(250px);
+    /* Move content by the sidebar width */
+}
+
+/* Profile Section */
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-section:hover {
+    transform: translateX(20px);
+    /* Slide right */
+}
+
+.profile-pic {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+}
+
+.user-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Stats Cards */
 .stat-cards {
     display: flex;
     gap: 20px;
-    flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
-    margin-top: -300px;
+    margin-top: 20px;
 }
 
-/* Stat Card */
 .card {
     background-color: white;
     padding: 20px;
@@ -85,78 +137,106 @@
     transform: scale(1.05);
 }
 
-.profile-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.profile-pic {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #ddd;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.profile-pic:hover {
-    transform: scale(1.1);
-}
-
-/* Enrolled Courses - Full Page Width */
-.enrolled-courses {
+/* Enrolled Courses */
+.courses-section {
     display: flex;
     flex-wrap: wrap;
-    /* Allows wrapping if too many cards */
     gap: 15px;
-    /* margin-top: -190px; */
-    padding: 10px;
     justify-content: flex-start;
-    /* Aligns items in a row */
-    width: 100vw;
-    /* color: #ddd; */
+    margin-top: 20px;
 }
-.courses-section {
-    margin-top: -20px; /* Adjust this value as needed */
-  }
-  
-/* Course Card */
+
 .course-card {
-    height: 120px;
+    width: 250px;
     background-color: #0d304b;
-    padding: 15px;
-    
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    min-width: 250px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: white;
     text-align: center;
     transition: transform 0.3s ease-in-out;
-    color: #ddd;
 }
 
 .course-card:hover {
     transform: scale(1.05);
 }
 
-/* Full Coverage for Main Content */
-.main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+.video-section {
+    margin-top: 20px;
 }
 
-.profile-pic {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    /* Ensures it's a circle */
+.video-group {
+    margin-bottom: 30px;
+}
+
+.video-list {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    /* Enables horizontal scrolling */
+    gap: 20px;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+    /* Smooth scroll */
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scrolling on mobile */
+}
+
+.video-item {
+    flex: 0 0 auto;
+    width: 260px;
+    /* Adjusted width for videos */
+    transition: transform 0.3s ease-in-out;
+}
+
+.video-item:hover {
+    transform: scale(1.05);
+    /* Zoom effect on hover */
+}
+
+.video-thumbnail {
+    width: 100%;
+    height: 150px;
     object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Custom Scrollbar */
+.video-list::-webkit-scrollbar {
+    height: 8px;
+}
+
+.video-list::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}
+
+.video-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.video-item:hover .video-thumbnail {
+    transform: scale(1.1);
+    /* Slightly scale the thumbnail on hover */
+}
+
+.view-more-btn {
+    background-color: #0d304b;
+    /* Button background */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.view-more-btn:hover {
+    background-color: #084f77;
+    /* Darker on hover */
 }

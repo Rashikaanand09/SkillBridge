@@ -1,22 +1,18 @@
 import React, { useState } from "react";
 import ProfileModal from "./ProfileModal";
+import { useContext } from "react";
+import { ProfileContext } from "./ProfileContext";
 import "../components/navbar.css";
+import sidebarIcon from "../assets/sidebar.png"; // Assuming you have this image
 
 const Navbar = () => {
-    const loggedInUser = "Riya Mangar"; // Replace with dynamic user data
+    const [userName, setUserName] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [profileImage, setProfileImage] = useState("/profile.png");
+    const { profileImage, setProfileImage } = useContext(ProfileContext);
+
 
     const handleImageClick = () => {
         setIsModalOpen(true);
-    };
-
-    const handleViewImage = () => {
-        alert("Viewing Image"); // This will be replaced by a modal
-    };
-
-    const handleChangeImage = () => {
-        document.getElementById("fileInput").click();
     };
 
     const handleFileUpload = (event) => {
@@ -30,7 +26,17 @@ const Navbar = () => {
     return (
         <>
             <nav className="navbar">
-                <h1>SkillBridge</h1>
+                <div className="navbar-left">
+                    {/* Sidebar Toggle Button */}
+                    <button className="sidebar-toggle">
+                        <img src={sidebarIcon} alt="Sidebar" className="sidebar-icon" />
+                    </button>
+
+                    {/* SkillBridge Name */}
+                    {/* <span className="website-name">SkillBridge</span> */}
+                </div>
+
+                {/* Navbar Links */}
                 <ul>
                     <li><a href="/" className="nav-link">Home</a></li>
                     <li><a href="/courses" className="nav-link active">Courses</a></li>
@@ -40,7 +46,6 @@ const Navbar = () => {
                 {/* Profile Section */}
                 <div className="profile-container" onClick={handleImageClick}>
                     <img src={profileImage} alt="Profile" className="profile-pic" />
-                    {/* <span className="username">{loggedInUser}</span> */}
                 </div>
             </nav>
 
@@ -56,8 +61,8 @@ const Navbar = () => {
             <ProfileModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
-                onView={handleViewImage}
-                onChange={handleChangeImage}
+                profileImage={profileImage}
+                onChange={() => document.getElementById("fileInput").click()}
             />
         </>
     );
