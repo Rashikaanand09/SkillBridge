@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../components/homepage.css"; // Import the CSS file
+import image1 from "../assets/image1.png";
 
 const Homepage = () => {
-
-
   return (
     <div
       className="homepage"
@@ -19,8 +18,6 @@ const Homepage = () => {
         alignItems: "center",
       }}
     >
-
-
       {/* Navbar */}
       <nav className="navbar">
         <div className="navbar-left">
@@ -61,16 +58,20 @@ const Homepage = () => {
             </div>
           </div>
 
+          {/* Triangle Container */}
           <div className="triangle-container">
+            {/* Circle Background */}
             <div className="circle-background"></div>
+
+            {/* Boxes with Images */}
             <div className="box box1">
-              <img src="../../assets/image1.jpg" alt="Box 1" />
+              <img src={image1} alt="Box 1" />
             </div>
             <div className="box box2">
-              <img src="../../assets/image2.jpg" alt="Box 2" />
+              <img src="/assets/image2.jpg" alt="Box 2" />
             </div>
             <div className="box box3">
-              <img src="../../assets/image3.jpg" alt="Box 3" />
+              <img src="/assets/image3.jpg" alt="Box 3" />
             </div>
           </div>
         </div>

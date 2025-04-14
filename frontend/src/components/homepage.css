@@ -112,26 +112,26 @@ body, html {
   
   .circle-background {
     position: absolute;
-    top: 87%;
-    left: 56%;
-    transform: translate(-50%, -50%);
-    width: 5090px;
-    height: 790px;
-    border-radius: 50%;
-    /* background-color: #cfe0e6; Light blue color */
+    top: 50%;
+    right: -80%; /* Start from the right side */
+    transform: translate(0%, -50%) skewX(-50deg); /* Skew to create a slant from right to left */
+    width: 170%; /* Full width */
+    height: 1500px; /* Adjust height as needed */
     background: radial-gradient(#cfe0e6, #a1c9f2); /* Gradient background */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     z-index: -1; /* Ensure it's behind the boxes */
-    animation: rotateCircle 30s linear infinite;
+    
   }
-  @keyframes rotateCircle {
+  
+  
+  /* @keyframes rotateCircle {
   0% {
-    transform: translate(-50%, -50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(70deg);
   }
   100% {
     transform: translate(-50%, -50%) rotate(360deg);
   }
-}
+} */
 
 .circle-background::after {
   content: "";
